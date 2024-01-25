@@ -1,6 +1,6 @@
 #include "pac.h"
 
-void newBaralho(carta *k[52]){
+void novoBaralho(carta *k[52]){
     srand(time(NULL));
     
     int c=-1;
@@ -30,4 +30,32 @@ void embaralha(carta *k[52]){
                 k[i] = aux;
             }
 
+}
+
+void novoDeck(){
+
+}
+
+void fundacao(){
+
+}
+
+void pilhas(){
+
+}
+
+void separaCartas(){
+
+}
+
+void mostrar(){
+
+}
+
+void mover(){
+
+}
+
+void finaliza(){
+    
 }
