@@ -2,6 +2,7 @@
 #include <time.h>
 #include <stdlib.h>
 
+//Aloca um baralho de cartas dinamicamente e salva todas em um vetor estático
 void novoBaralho(carta *baralho[52]){
     srand(time(NULL));
     
@@ -16,11 +17,10 @@ void novoBaralho(carta *baralho[52]){
 
         baralho[i]->id = rand();
     }
-    
 }
 
+//Embaralha as cartas pelo id aleatório
 void embaralha(carta *baralho[52]){
-
     for(int i = 0; i < 51; i++)
         for(int j = 0; j < 51-i; j++)
             if(baralho[j]->id > baralho[j+1]->id){
@@ -28,23 +28,52 @@ void embaralha(carta *baralho[52]){
                 baralho[j] = baralho[j+1];
                 baralho[j+1] = aux;
             }
-
 }
 
-void novoDeck(){
-
+//Coloca a quantidade certa de cartas em cada coluna e seta a última carta de cada coluna como virada
+void setColunas(carta *baralho[52], lista colunas[7]){
+    int c=0;
+    for(int i = 0; i < 7; i++){
+        colunas[i].comeco=0;
+        colunas[i].tamanho=i+1;
+        for(int j = 0; j <= i; j++){
+            baralho[c]->proxima = colunas[i].comeco;
+            colunas[i].comeco = baralho[c];
+            if(j==0) baralho[c]->virada = 1;
+            c++;
+        }
+    }
 }
 
-void fundacao(){
-
+//Coloca o restante das cartas no deck
+void setDeck(carta *baralho[52], lista *deck){
+    deck->comeco = 0;
+    deck->tamanho = 24;
+    for(int i=28; i<52; i++){
+        baralho[i]->proxima = deck->comeco;
+        deck->comeco = baralho[i];
+    }
 }
 
-void pilhas(){
-    
+//Limpa o lixo de memória nas pilhas
+void setPilhas(lista pilhas[4]){
+    for(int i = 0; i < 4; i++){
+        pilhas[i].comeco = 0;
+        pilhas[i].tamanho = 0;
+    }
 }
 
-void separaCartas(){
+//Setup com o baralho já criado
+void separarCartas(carta *baralho[52], lista *deck, lista colunas[7], lista pilhas[4]){
+    setColunas(baralho, colunas);
+    setDeck(baralho, deck);
+    setPilhas(pilhas);
+}
 
+void liberaBaralho(carta *baralho[52]){
+    for(int i = 0; i < 52; i++){
+        free(baralho[i]);
+    }
 }
 
 void mostrar(){
