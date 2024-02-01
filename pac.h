@@ -7,8 +7,8 @@ typedef struct _carta {
     struct _carta *proxima;
 } carta;
 
-void novoBaralho(carta *k[52]);
-void embaralha(carta *k[52]);
+void novoBaralho(carta *baralho[52]);
+void embaralha(carta *baralho[52]);
 void novoDeck();
 void fundacao();
 void pilhas();
