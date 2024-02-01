@@ -1,26 +1,23 @@
 #include "pac.h"
 #include <stdio.h>
 
-void print();
+void print(carta *baralho[52]);
 
 int main(){
+    carta *baralho[52];
 
-    novoBaralho();
-    print();
-    embaralha();
-    print();
+    novoBaralho(baralho);
+    // print(baralho);
+    embaralha(baralho);
+    print(baralho);
 
     return 0;
 };
 
-void print(){
+void print(carta *baralho[52]){
 
-    carta *atual = monte;
-
-    while(atual != NULL){
-        printf("%d%c ", atual->valor, atual->naipe);
-        atual = atual->proxima;
-    }
+    for(int i = 0; i < 52; i++)
+        printf("%d%c ", baralho[i]->valor, baralho[i]->naipe);
 
     printf("\n");
 }

@@ -2,15 +2,13 @@
 #define __PAC_H__
 
 typedef struct _carta {
-    int valor;
+    int valor, id;
     char naipe;
     struct _carta *proxima;
 } carta;
 
-extern carta *monte;
-
-void novoBaralho();
-void embaralha();
+void novoBaralho(carta *k[52]);
+void embaralha(carta *k[52]);
 void novoDeck();
 void fundacao();
 void pilhas();
