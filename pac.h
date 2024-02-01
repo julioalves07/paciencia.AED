@@ -1,18 +1,16 @@
 #ifndef __PAC_H__
 #define __PAC_H__
 
-#include <time.h>
-#include <stdlib.h>
-#include <stdio.h>
-
 typedef struct _carta {
-    int valor, id;
+    int valor;
     char naipe;
-    struct _carta *proximo;
+    struct _carta *proxima;
 } carta;
 
-void novoBaralho(carta *k[52]);
-void embaralha(carta *k[52]);
+extern carta *monte;
+
+void novoBaralho();
+void embaralha();
 void novoDeck();
 void fundacao();
 void pilhas();
