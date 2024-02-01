@@ -5,18 +5,15 @@
 void novoBaralho(carta *baralho[52]){
     srand(time(NULL));
     
-    int c=-1;
-
     for(int i = 0; i < 52; i++){
-
         baralho[i] = (carta *) calloc(1, sizeof(carta));
-        
-        if(!(i%13)) c++;
         baralho[i]->valor = i%13 + 1;
-        if(c==0) baralho[i]->naipe = 'c';
-        if(c==1) baralho[i]->naipe = 'e';
-        if(c==2) baralho[i]->naipe = 'o';
-        if(c==3) baralho[i]->naipe = 'p';
+
+        if(i < 13) baralho[i]->naipe = 'c';
+        else if(i < 26) baralho[i]->naipe = 'e';
+        else if(i < 39) baralho[i]->naipe = 'o';
+        else baralho[i]->naipe = 'p';
+
         baralho[i]->id = rand();
     }
     
